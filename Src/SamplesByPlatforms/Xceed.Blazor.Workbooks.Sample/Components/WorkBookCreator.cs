@@ -283,6 +283,7 @@ namespace Xceed.Blazor.Workbooks.Sample.Components
 			var bytes = await File.ReadAllBytesAsync( fileName );
 			var base64 = Convert.ToBase64String( bytes );
 			await jsRuntime.InvokeVoidAsync( "BlazorDownloadFile", fileName, base64 );
-		}
+            File.Delete( fileName );
+        }
 	}
 }
