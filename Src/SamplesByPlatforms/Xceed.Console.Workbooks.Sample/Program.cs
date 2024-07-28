@@ -1,19 +1,20 @@
-﻿using Xceed.Workbooks.NET;
+﻿using Pastel;
+using Xceed.Workbooks.NET;
 
 //Use a valid license key
-Xceed.Workbooks.NET.Licenser.LicenseKey = "XXXXX-YYYYY-ZZZZZ-XXXX";
-
+Xceed.Workbooks.NET.Licenser.LicenseKey = "XXXXX-XXXXX-XXXXX-XXXX";
+bool opened = false;
 Console.Title = "Xceed Workbooks.NET Sample";
 while( true )
 {
-	Console.WriteLine( "Choose an option:" );
-	Console.WriteLine( "1 - To export an excel with simple data (3 sheets with a normal Table)" );
-	Console.WriteLine( "2 - To export an excel with styled data (3 sheets with data with custom font, color and background)" );
-	Console.WriteLine( "0 - Exit" );
-
+	if( !opened )
+	{
+		PrintMenu();
+	}
 	var key = Console.ReadKey().KeyChar;
 	Console.Clear();
-
+	opened = true;
+	PrintMenu();
 	switch( key )
 	{
 		case '1':
@@ -25,9 +26,17 @@ while( true )
 		case '0':
 			return;
 		default:
-			Console.WriteLine( "Invalid option. Try again." );
+			Console.WriteLine( "Invalid option. Try again.".Pastel( "#ff0000" ) );
 			break;
 	}
+}
+
+static void PrintMenu()
+{
+	Console.WriteLine( "Choose an option:".Pastel( "#FE671A" ) );
+	Console.WriteLine( "1 - To export an excel with simple data (3 sheets with a normal Table)".Pastel( "#FE671A" ) );
+	Console.WriteLine( "2 - To export an excel with styled data (3 sheets with data with custom font, color and background)".Pastel( "#FE671A" ) );
+	Console.WriteLine( "0 - Exit".Pastel( "#FE671A" ) );
 }
 
 void GenerateSimpleWorkbook()
@@ -47,7 +56,7 @@ void GenerateSimpleWorkbook()
 	PopulateSheet( mexicoSheet, GetTopCitiesMexico() );
 
 	workbook.Save();
-	Console.WriteLine( $"Document saved to {filePath}" );
+	Console.WriteLine( $"Document saved to {filePath}".Pastel( "#33B0A4" ) );
 }
 
 void GenerateStyledWorkbook()
@@ -68,7 +77,7 @@ void GenerateStyledWorkbook()
 	PopulateSheetEmployees( techSheet, GenerateEmployees() );
 	PopulateSheetEmployees( warehouseSheet, GenerateEmployees() );
 	workbook.Save();
-	Console.WriteLine( $"Document saved to {filePath}" );
+	Console.WriteLine( $"Document saved to {filePath}".Pastel( "#33B0A4" ) );
 }
 
 
@@ -295,5 +304,4 @@ class EmployeeData
 	public string Surname { get; set; }
 	public int[] MonthlyData { get; set; }
 }
-
 

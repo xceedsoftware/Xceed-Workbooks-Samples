@@ -6,16 +6,13 @@ using Xceed.Workbooks.NET;
 
 namespace Xceed.Wpf.Workbooks.Sample
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
 	public partial class MainWindow : Window
 	{
 		public MainWindow()
 		{
 			InitializeComponent();
 			//Use a valid license key
-			Xceed.Workbooks.NET.Licenser.LicenseKey = "XXXXX-YYYYY-ZZZZZ-XXXX";
+			Xceed.Workbooks.NET.Licenser.LicenseKey = "XXXXX-XXXXX-XXXXX-XXXX";
 		}
 
 		private void GenerateWorkbookButton_Click( object sender, RoutedEventArgs e )
@@ -25,7 +22,6 @@ namespace Xceed.Wpf.Workbooks.Sample
 				Filter = "Excel Workbook|*.xlsx",
 				Title = "Save an Excel Workbook"
 			};
-
 			if( saveFileDialog.ShowDialog() == true )
 			{
 				// Create a new workbook
@@ -43,8 +39,8 @@ namespace Xceed.Wpf.Workbooks.Sample
 				workbook.SaveAs( saveFileDialog.FileName );
 				MessageBox.Show( $"Workbook saved" );
 			}
-
 		}
+
 		private void PopulateSheet( Worksheet sheet, List<CityData> cities )
 		{
 			// Header

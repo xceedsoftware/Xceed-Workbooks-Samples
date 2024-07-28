@@ -1,7 +1,7 @@
 using Xceed.Blazor.Workbooks.Sample.Components;
 
 //Use a valid license key
-Xceed.Workbooks.NET.Licenser.LicenseKey = "XXXXX-YYYYY-ZZZZZ-XXXX";
+Xceed.Workbooks.NET.Licenser.LicenseKey = "XXXXX-XXXXX-XXXXX-XXXX";
 
 var builder = WebApplication.CreateBuilder( args );
 

@@ -11,10 +11,10 @@ namespace Xceed.Winform.Workbooks.Sample
 		{
 			InitializeComponent();
 			//Use a valid license key
-			Xceed.Workbooks.NET.Licenser.LicenseKey = "XXXXX-YYYYY-ZZZZZ-XXXX";
+			Xceed.Workbooks.NET.Licenser.LicenseKey = "XXXXX-XXXXX-XXXXX-XXXX";
 		}
 
-		private void button1_Click( object sender, EventArgs e )
+		private void SimpleWorkbook_Click( object sender, EventArgs e )
 		{
 			var saveFileDialog = new SaveFileDialog
 			{
@@ -183,7 +183,7 @@ namespace Xceed.Winform.Workbooks.Sample
 			public string Location { get; set; }
 		}
 
-		private void button2_Click( object sender, EventArgs e )
+		private void StyledWorkbook_Click( object sender, EventArgs e )
 		{
 			var saveFileDialog = new SaveFileDialog
 			{
