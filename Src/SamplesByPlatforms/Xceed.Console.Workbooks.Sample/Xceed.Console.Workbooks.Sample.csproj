@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Pastel" Version="5.1.0" />
+    <PackageReference Include="Pastel" Version="6.0.1" />
     <PackageReference Include="Xceed.Workbooks.NET" Version="1.4.24152.1219" />
   </ItemGroup>
 
