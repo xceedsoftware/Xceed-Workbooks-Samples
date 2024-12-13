@@ -25,6 +25,7 @@ namespace Xceed.Workbooks.NET.Examples
 
     private static void Main( string[] args )
     {
+      Xceed.Workbooks.NET.Licenser.LicenseKey = "WBN14-JHYP7-07K4D-C41A";
 #if !BLUEPRINT
       XceedDeploymentLicense.SetLicense();
 #endif

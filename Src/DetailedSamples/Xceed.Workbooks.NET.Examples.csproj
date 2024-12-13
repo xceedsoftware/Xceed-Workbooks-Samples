@@ -72,6 +72,9 @@
     <None Include="Samples\Worksheet\Resources\ThreeWorksheets.xlsx" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Xceed.Workbooks.NET">
+      <HintPath>bin\Debug\Xceed.Workbooks.NET.dll</HintPath>
+    </Reference>
     <Reference Include="Xceed.Workbooks.NET.dll">
       <HintPath>..\Xceed.Workbooks.NET\bin\$(Configuration)\Xceed.Workbooks.NET.dll</HintPath>
     </Reference>
