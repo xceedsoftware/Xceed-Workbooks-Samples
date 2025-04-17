@@ -11,7 +11,7 @@ namespace Xceed.Winform.Workbooks.Sample
 		{
 			InitializeComponent();
 			//Use a valid license key
-			Xceed.Workbooks.NET.Licenser.LicenseKey = "XXXXX-XXXXX-XXXXX-XXXX";
+			Xceed.Workbooks.NET.Licenser.LicenseKey = "LICENSE_KEY_PLACEHOLDER";
 		}
 
 		private void SimpleWorkbook_Click( object sender, EventArgs e )

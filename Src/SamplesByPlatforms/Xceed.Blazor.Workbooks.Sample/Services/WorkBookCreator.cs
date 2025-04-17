@@ -1,45 +1,60 @@
-﻿using Microsoft.Win32;
-using System.Windows;
+﻿using Microsoft.JSInterop;
 using Xceed.Workbooks.NET;
 
-namespace Xceed.Wpf.Workbooks.Sample
+namespace Xceed.Blazor.Workbooks.Sample.Services
 {
-	public partial class MainWindow : Window
+  public class WorkBookCreator
   {
-    public MainWindow()
+    private readonly IJSRuntime jsRuntime;
+    public WorkBookCreator( IJSRuntime _jsRuntime )
     {
-      InitializeComponent();
-      //Use a valid license key
-      Xceed.Workbooks.NET.Licenser.LicenseKey = "LICENSE_KEY_PLACEHOLDER";
+      jsRuntime = _jsRuntime;
     }
 
-    private void GenerateWorkbookButton_Click( object sender, RoutedEventArgs e )
+    public async Task GenerateSimpleWorkbook()
     {
-      var saveFileDialog = new SaveFileDialog
-      {
-        Filter = "Excel Workbook|*.xlsx",
-        Title = "Save an Excel Workbook"
-      };
-      if( saveFileDialog.ShowDialog() == true )
-      {
-        // Create a new workbook
-        var workbook = Workbook.Create( saveFileDialog.FileName );
+      string filePath = "simple_workbook.xlsx";
+      var workbook = Workbook.Create( filePath );
 
-        // Create sheets for USA, Canada, and Mexico
-        var usaSheet = workbook.Worksheets[0];
-        var canadaSheet = workbook.Worksheets.Add( "Canada" );
-        var mexicoSheet = workbook.Worksheets.Add( "Mexico" );
-        usaSheet.Name = "USA";
-        // Add data to each sheet
-        PopulateSheet( usaSheet, GetTopCitiesUSA() );
-        PopulateSheet( canadaSheet, GetTopCitiesCanada() );
-        PopulateSheet( mexicoSheet, GetTopCitiesMexico() );
-        workbook.SaveAs( saveFileDialog.FileName );
-        MessageBox.Show( $"Workbook saved" );
-      }
+      // Create sheets for USA, Canada, and Mexico
+      var usaSheet = workbook.Worksheets[ 0 ];
+      var canadaSheet = workbook.Worksheets.Add( "Canada" );
+      var mexicoSheet = workbook.Worksheets.Add( "Mexico" );
+      usaSheet.Name = "USA";
+
+      // Add data to each sheet
+      PopulateSheet( usaSheet, GetTopCitiesUSA() );
+      PopulateSheet( canadaSheet, GetTopCitiesCanada() );
+      PopulateSheet( mexicoSheet, GetTopCitiesMexico() );
+
+      workbook.Save();
+      await DownloadFile( filePath );
+      workbook.Dispose();
     }
 
-    private void PopulateSheet( Worksheet sheet, List<CityData> cities )
+    public async Task GenerateStyledWorkbook()
+    {
+      string filePath = "styled_workbook.xlsx";
+      // Create a new workbook
+      var workbook = Workbook.Create( filePath );
+
+      // Create sheets for each department
+      var hrSheet = workbook.Worksheets[ 0 ];
+      var techSheet = workbook.Worksheets.Add( "Technical Department" );
+      var warehouseSheet = workbook.Worksheets.Add( "Warehouse" );
+
+      hrSheet.Name = "Human Resources";
+      // Add data to each sheet
+      PopulateSheetEmployees( hrSheet, GenerateEmployees() );
+      PopulateSheetEmployees( techSheet, GenerateEmployees() );
+      PopulateSheetEmployees( warehouseSheet, GenerateEmployees() );
+      workbook.Save();
+      await DownloadFile( filePath );
+      workbook.Dispose();
+    }
+
+
+    void PopulateSheet( Worksheet sheet, List<CityData> cities )
     {
       // Header
       var headers = new[] { "City", "Population", "Area (km²)", "Location (Lat, Long)" };
@@ -61,7 +76,7 @@ namespace Xceed.Wpf.Workbooks.Sample
       }
     }
 
-    private List<CityData> GetTopCitiesUSA()
+    List<CityData> GetTopCitiesUSA()
     {
       return new List<CityData>
       {
@@ -98,7 +113,7 @@ namespace Xceed.Wpf.Workbooks.Sample
       };
     }
 
-    private List<CityData> GetTopCitiesCanada()
+    List<CityData> GetTopCitiesCanada()
     {
       return new List<CityData>
       {
@@ -135,7 +150,7 @@ namespace Xceed.Wpf.Workbooks.Sample
       };
     }
 
-    private List<CityData> GetTopCitiesMexico()
+    List<CityData> GetTopCitiesMexico()
     {
       return new List<CityData>
       {
@@ -172,43 +187,7 @@ namespace Xceed.Wpf.Workbooks.Sample
       };
     }
 
-    public class CityData
-    {
-      public string City { get; set; }
-      public string Population { get; set; }
-      public string Area { get; set; }
-      public string Location { get; set; }
-    }
-
-    private void GenerateWorkbookStyleButton_Click( object sender, RoutedEventArgs e )
-    {
-      var saveFileDialog = new SaveFileDialog
-      {
-        Filter = "Excel Workbook|*.xlsx",
-        Title = "Save an Excel Workbook"
-      };
-
-      if( saveFileDialog.ShowDialog() == true )
-      {
-        // Create a new workbook
-        var workbook = Workbook.Create( saveFileDialog.FileName );
-
-        // Create sheets for each department
-        var hrSheet = workbook.Worksheets[0];
-        var techSheet = workbook.Worksheets.Add( "Technical Department" );
-        var warehouseSheet = workbook.Worksheets.Add( "Warehouse" );
-
-        hrSheet.Name = "Human Resources";
-        // Add data to each sheet
-        PopulateSheet( hrSheet, GenerateFakeData() );
-        PopulateSheet( techSheet, GenerateFakeData() );
-        PopulateSheet( warehouseSheet, GenerateFakeData() );
-        workbook.SaveAs( saveFileDialog.FileName );
-        MessageBox.Show( $"Workbook saved" );
-      }
-    }
-
-    private void PopulateSheet( Worksheet sheet, List<EmployeeData> employees )
+    void PopulateSheetEmployees( Worksheet sheet, List<EmployeeData> employees )
     {
       // Header
       var headers = new[] { "Name", "Surname", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Sum", "Average" };
@@ -216,7 +195,7 @@ namespace Xceed.Wpf.Workbooks.Sample
       {
         var cell = sheet.Cells[ 2, i + 2 ];
         cell.Value = headers[ i ];
-        cell.Style.Font = new Font() { Bold = true, Color = System.Drawing.ColorTranslator.FromHtml( "#EEE4B1" ), Size = 14 };
+        cell.Style.Font = new Xceed.Workbooks.NET.Font() { Bold = true, Color = System.Drawing.ColorTranslator.FromHtml( "#EEE4B1" ), Size = 14 };
         cell.Style.Fill.BackgroundColor = System.Drawing.ColorTranslator.FromHtml( "#430A5D" );
       }
 
@@ -257,7 +236,7 @@ namespace Xceed.Wpf.Workbooks.Sample
       }
     }
 
-    private List<EmployeeData> GenerateFakeData()
+    List<EmployeeData> GenerateEmployees()
     {
       var names = new[] { "John", "Jane", "Alice", "Bob", "Carol", "David", "Eve", "Frank", "Grace", "Hank", "Ivy", "Jack", "Kathy", "Liam", "Mona" };
       var surnames = new[] { "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris" };
@@ -284,11 +263,28 @@ namespace Xceed.Wpf.Workbooks.Sample
       return data;
     }
 
-    public class EmployeeData
+    class CityData
+    {
+      public string City { get; set; }
+      public string Population { get; set; }
+      public string Area { get; set; }
+      public string Location { get; set; }
+    }
+
+    class EmployeeData
     {
       public string Name { get; set; }
       public string Surname { get; set; }
       public int[] MonthlyData { get; set; }
     }
+
+    private async Task DownloadFile( string fileName )
+    {
+      var bytes = await File.ReadAllBytesAsync( fileName );
+      var base64 = Convert.ToBase64String( bytes );
+      await jsRuntime.InvokeVoidAsync( "BlazorDownloadFile", fileName, base64 );
+      File.Delete( fileName );
+    }
   }
+
 }

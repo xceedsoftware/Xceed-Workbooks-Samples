@@ -2,7 +2,7 @@
 using Xceed.Workbooks.NET;
 
 //Use a valid license key
-Xceed.Workbooks.NET.Licenser.LicenseKey = "XXXXX-XXXXX-XXXXX-XXXX";
+Xceed.Workbooks.NET.Licenser.LicenseKey = "LICENSE_KEY_PLACEHOLDER";
 bool opened = false;
 Console.Title = "Xceed Workbooks.NET Sample";
 while( true )
