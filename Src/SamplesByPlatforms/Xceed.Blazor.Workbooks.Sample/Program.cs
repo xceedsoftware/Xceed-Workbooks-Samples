@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Xceed.Blazor.Workbooks.Sample;
 using Xceed.Blazor.Workbooks.Sample.Services;
 
-//Use a valid license key
+//Use a valid license key. doing push
 Xceed.Workbooks.NET.Licenser.LicenseKey = "LICENSE_KEY_PLACEHOLDER";
 
 var builder = WebAssemblyHostBuilder.CreateDefault( args );
