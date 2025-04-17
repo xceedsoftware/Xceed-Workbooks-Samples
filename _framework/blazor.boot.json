@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Xceed.Blazor.Workbooks.Sample",
   "resources": {
-    "hash": "sha256-C+f+lDgG4Vv1TN0a4ZSCZDVlNnkR6UcObGLBPQBJe5g=",
+    "hash": "sha256-yvVoya45xyUnJ6VnPY4XdRLVHLIlVwXOgbBBGR0ExIE=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.gjulhegvw1.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.horg9ede60.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
@@ -73,7 +73,7 @@
       "System.Xml.Linq.omrm9aobo0.wasm": "System.Xml.Linq.wasm",
       "System.Xml.ReaderWriter.fwr9ltsfkv.wasm": "System.Xml.ReaderWriter.wasm",
       "System.Xml.XDocument.m56dffis6i.wasm": "System.Xml.XDocument.wasm",
-      "Xceed.Blazor.Workbooks.Sample.5jvhdtwpba.wasm": "Xceed.Blazor.Workbooks.Sample.wasm",
+      "Xceed.Blazor.Workbooks.Sample.a4jxwzzl8b.wasm": "Xceed.Blazor.Workbooks.Sample.wasm",
       "Xceed.SystemDrawingCommon.Fonts.zrzfiquxx7.wasm": "Xceed.SystemDrawingCommon.Fonts.wasm",
       "Xceed.SystemDrawingCommon.Images.l0a403einn.wasm": "Xceed.SystemDrawingCommon.Images.wasm",
       "Xceed.Workbooks.NET.u996f3wz0e.wasm": "Xceed.Workbooks.NET.wasm",
@@ -172,7 +172,7 @@
       "System.Xml.Linq.omrm9aobo0.wasm": "sha256-YIafJK5Imy94JBPwVefO7XwTTr6Wrdt8J4cuwLfDjV8=",
       "System.Xml.ReaderWriter.fwr9ltsfkv.wasm": "sha256-gcH+LAhmizrQD7Z8NfDD3AHgubCVSfyahdNZ4Eo6x1o=",
       "System.Xml.XDocument.m56dffis6i.wasm": "sha256-aouFkxrmIxFrnY6uBYnk6zETi2lPlQ5Zt39W02UAR9k=",
-      "Xceed.Blazor.Workbooks.Sample.5jvhdtwpba.wasm": "sha256-H0W4Zv86OcW6GC/wPBzY31c0BOpJ5KVa2jhq1PsoYvw=",
+      "Xceed.Blazor.Workbooks.Sample.a4jxwzzl8b.wasm": "sha256-9iRhYYaY+7Oqr9FKhL8CxjqMf1sPOlRrDx5D8Mvp22A=",
       "Xceed.SystemDrawingCommon.Fonts.zrzfiquxx7.wasm": "sha256-33wUzgpFQI0qf9/++wtL+zTGyvobEcZURLi1PWKa0oI=",
       "Xceed.SystemDrawingCommon.Images.l0a403einn.wasm": "sha256-tVepf04LmigOeOl+sGYP1iMt2M7twjQ6w2qke4kfjpo=",
       "Xceed.Workbooks.NET.u996f3wz0e.wasm": "sha256-co8Rkp0fZsx2rj5ULaTe1sh0ZBIHC6ngmOqF1rcqD58="
