@@ -1,4 +1,4 @@
-![NuGet Downloads](https://img.shields.io/nuget/dt/Xceed.Workbooks.NET) ![Static Badge](https://img.shields.io/badge/.Net_Framework-4.0%2B-blue) ![Static Badge](https://img.shields.io/badge/.Net-5.0%2B-blue) [![Learn More](https://img.shields.io/badge/Learn-More-blue?style=flat&labelColor=gray)](https://xceed.com/en/our-products/product/workbooks-for-net)
+![NuGet Downloads](https://img.shields.io/nuget/dt/Xceed.Workbooks.NET) ![Static Badge](https://img.shields.io/badge/.Net_Framework-4.0%2B-blue) ![Static Badge](https://img.shields.io/badge/.Net-5.0%2B-blue) [![Learn More](https://img.shields.io/badge/Learn-More-blue?style=flat&labelColor=gray)](https://xceed.com/en/our-products/product/workbooks-for-net) [![See Demo](https://img.shields.io/badge/Simple_Live_Demo-▶-brightgreen)](https://xceedsoftware.github.io/Xceed-Workbooks-Samples/) [![See Demo](https://img.shields.io/badge/Complex_Live_Demo-▶-red)](https://xceedsoftware.github.io/BlazorDocx-public/workbooksample)
 
 [![Xceed Workbooks for .NET](./Resources/workbooks_header.png)](https://xceed.com/en/our-products/product/workbooks-for-net)
 
@@ -6,10 +6,6 @@
 # Xceed Workbooks for .NET - Examples
 
 This repository contains a variety of sample applications to help you get started with using the Xceed Workbooks for .NET in your own projects.
-
-- [![See Demo](https://img.shields.io/badge/Simple_Live_Demo-▶-brightgreen)](https://xceedsoftware.github.io/Xceed-Workbooks-Samples/)
-
-- [![See Demo](https://img.shields.io/badge/Complex_Live_Demo-▶-red)](https://xceedsoftware.github.io/BlazorDocx-public/workbooksample)
 
 ## Overview
 
